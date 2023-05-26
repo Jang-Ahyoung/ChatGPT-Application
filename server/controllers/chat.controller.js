@@ -1,7 +1,7 @@
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from 'openai';
 
 const openAIConfig = new Configuration({
-  apiKey: process.env.OPENAI_KEY
+  apiKey: process.env.OPENAI_KEY,
 });
 
 const openAIApi = new OpenAIApi(openAIConfig);
@@ -9,20 +9,16 @@ const openAIApi = new OpenAIApi(openAIConfig);
 export const chatCompletion = async (req, res) => {
   try {
     const { prompt } = req.body;
-
-    const answer = await openAIApi.createCompletion({
-      model: "text-davinci-003", // 사용할 모델의 ID (ex.gpt-3.5-turbo)
-      prompt,
-      temperature: 0,
-      max_tokens: 3000
+    const answer = await openAIApi.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: prompt,
     });
-
-    const text = answer.data.choices[0].text;
+    const text = answer.data.choices[0].message.content;
 
     res.status(200).json({ text });
   } catch (err) {
     res.status(500).json({
-      message: err.message
+      message: err.message,
     });
   }
 };
