@@ -1,0 +1,1 @@
+export { tokenAuth } from './token.middleware.js';
