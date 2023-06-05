@@ -1,21 +1,26 @@
 import '@emotion/react';
+import theme from './styles/theme';
 
 declare module '@emotion/react' {
-  export interface Theme {
+  export type Theme = {
+    breakpoints: {
+      values: {
+        [key in keyof theme['values']]: number;
+      };
+    };
     fontSizes: {
-      xxs: string;
-      xs: string;
-      sm: string;
-      base: string;
-      md: string;
-      lg: string;
+      [key in keyof theme['fontSizes']]: string;
     };
     palette: {
-      black: string;
-      dark: string;
-      error: string;
-      primary: string;
-      secondary: string;
+      common: {
+        [key in keyof theme['common']]: string;
+      };
+      secondary: {
+        [key in keyof theme['secondary']]: string;
+      };
+      error: {
+        [key in keyof theme['error']]: string;
+      };
     };
-  }
+  };
 }

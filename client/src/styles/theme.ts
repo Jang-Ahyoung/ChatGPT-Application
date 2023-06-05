@@ -1,6 +1,7 @@
-const theme = {
+import { Theme } from '@emotion/react';
+
+const theme: Theme = {
   breakpoints: {
-    keys: ['xs', 'sm', 'md', 'lg', 'xl'],
     values: {
       xs: 0,
       sm: 600,
@@ -31,10 +32,10 @@ const theme = {
       contrastText: '#E1E4E3',
     },
     error: {
-      main: '#E76055',
-      contrastText: '#FFFFFF',
       light: 'rgb(235, 127, 119)',
       dark: 'rgb(161, 67, 59)',
+      main: '#E76055',
+      contrastText: '#FFFFFF',
     },
   },
 };
